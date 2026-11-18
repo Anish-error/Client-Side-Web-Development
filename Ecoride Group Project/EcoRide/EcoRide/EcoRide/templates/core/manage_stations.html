@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Stations — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-manage-page">
+
+    <header class="eco-manage-header">
+        <a class="eco-back-link" href="{% url 'staff_dashboard' %}">
+            ← Back to Dashboard
+        </a>
+
+        <span class="eco-eyebrow">EcoRide operations</span>
+        <h1>Station Management</h1>
+        <p>Add, update and manage your EcoRide station network.</p>
+    </header>
+
+
+    <!-- ADD STATION -->
+    <section class="eco-manage-form-card">
+
+        <div class="eco-manage-section-heading">
+            <div>
+                <span class="eco-eyebrow">Expand your network</span>
+                <h2>Add New Station</h2>
+                <p>Enter the details of the new bicycle station.</p>
+            </div>
+
+            <span class="eco-manage-icon" aria-hidden="true">📍</span>
+        </div>
+
+        <form method="post" class="eco-manage-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="eco-manage-field">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="eco-help">{{ field.help_text }}</div>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="eco-error">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="eco-primary-btn" type="submit">
+                + Add Station
+            </button>
+        </form>
+
+    </section>
+
+
+    <!-- STATION LIST -->
+    <section class="eco-manage-list-section">
+
+        <div class="eco-manage-section-heading">
+            <div>
+                <span class="eco-eyebrow">Your network</span>
+                <h2>All Stations</h2>
+                <p>View and manage your registered stations.</p>
+            </div>
+        </div>
+
+
+        <div class="eco-station-management-list">
+
+            {% for station in stations %}
+
+                <article class="eco-managed-station-card">
+
+                    <div class="eco-managed-station-info">
+
+                        <div class="eco-managed-station-title">
+                            <span class="eco-managed-station-icon" aria-hidden="true">
+                                📍
+                            </span>
+
+                            <div>
+                                <h3>{{ station.name }}</h3>
+
+                                {% if station.is_active %}
+                                    <span class="eco-management-status eco-management-active">
+                                        Active
+                                    </span>
+                                {% else %}
+                                    <span class="eco-management-status eco-management-inactive">
+                                        Inactive
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <p class="eco-managed-station-address">
+                            {{ station.address }}
+                        </p>
+
+                        <div class="eco-managed-station-capacity">
+                            <span>Station capacity</span>
+                            <strong>{{ station.capacity }} bicycles</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="eco-managed-station-actions">
+
+                        <a
+                            class="eco-admin-secondary-btn"
+                            href="{% url 'edit_station' station.id %}"
+                        >
+                            Edit Station
+                        </a>
+
+                        {% if station.is_active %}
+
+                            <form
+                                method="post"
+                                action="{% url 'deactivate_station' station.id %}"
+                                onsubmit="return confirm('Are you sure you want to deactivate this station?');"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    class="eco-management-danger-btn"
+                                    type="submit"
+                                >
+                                    Deactivate
+                                </button>
+                            </form>
+
+                        {% else %}
+
+                            <form
+                                method="post"
+                                action="{% url 'reactivate_station' station.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    class="eco-management-reactivate-btn"
+                                    type="submit"
+                                >
+                                    Reactivate
+                                </button>
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="eco-management-empty">
+                    <span aria-hidden="true">📍</span>
+                    <h3>No stations yet</h3>
+                    <p>Add your first EcoRide station using the form above.</p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

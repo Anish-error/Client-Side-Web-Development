@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Secure checkout — EcoRide{% endblock %}
+{% block content %}
+<section class="eco-auth-wrap">
+  <div class="eco-auth-card">
+    <span class="eco-eyebrow">Secure Razorpay checkout</span>
+    <h1>Your Pune ride is almost ready.</h1>
+    <p>Bike <strong>{{ rental.bicycle.code }}</strong> · {{ rental.start_station.name }}</p>
+    <div class="eco-checkout-total"><span>Total</span><strong>₹{{ payment.amount_display|floatformat:2 }}</strong></div>
+    <p class="eco-small-note">Pay with UPI, cards, or other methods available in your Razorpay test account. This is a test-mode transaction.</p>
+    <form id="razorpay-verify-form" method="post" action="{% url 'verify_payment' %}">
+      {% csrf_token %}
+      <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
+      <input type="hidden" name="razorpay_payment_id">
+      <input type="hidden" name="razorpay_signature">
+      <button class="eco-primary-btn eco-full-button" id="open-checkout" type="button">Continue to payment</button>
+    </form>
+    <form method="post" action="{% url 'cancel_checkout' rental.id %}">
+      {% csrf_token %}<button class="eco-cancel-button" type="submit">Cancel reservation</button>
+    </form>
+    <p class="eco-checkout-status" id="checkout-status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+{{ checkout_options|json_script:"razorpay-options" }}
+{% endblock %}
+{% block scripts %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'core/razorpay-checkout.js' %}" defer></script>
+{% endblock %}

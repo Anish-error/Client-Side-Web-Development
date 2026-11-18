@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-auth-wrap">
+
+    <div class="eco-auth-card">
+
+        <div class="eco-auth-icon" aria-hidden="true">
+            🚲
+        </div>
+
+        <span class="eco-eyebrow">Welcome back to EcoRide</span>
+
+        <h1>Sign in</h1>
+
+        <p class="eco-auth-description">
+            Your next Pune ride is just around the corner.
+            Sign in to continue your journey.
+        </p>
+
+        <form method="post" class="eco-form-stack">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="eco-auth-field">
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+                {% if form.username.errors %}
+                    <div class="eco-error">
+                        {{ form.username.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="eco-auth-field">
+                <label for="{{ form.password.id_for_label }}">
+                    Password
+                </label>
+
+                {{ form.password }}
+
+                {% if form.password.errors %}
+                    <div class="eco-error">
+                        {{ form.password.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <button class="eco-primary-btn eco-auth-submit" type="submit">
+                Sign in →
+            </button>
+
+        </form>
+
+        <div class="eco-auth-divider"></div>
+
+        <p class="eco-auth-foot">
+            New to EcoRide?
+            <a class="eco-text-link" href="{% url 'signup' %}">
+                Create an account
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+
+{% block title %}Ride {{ rental.bicycle.code }} — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-rental-page">
+
+    <!-- PAGE HEADING -->
+    <header class="eco-page-heading">
+
+        <a class="eco-back-link" href="{% url 'dashboard' %}">
+            ← Back to My Rides
+        </a>
+
+        <span class="eco-eyebrow">Your EcoRide journey</span>
+
+        <h1>Ride Details</h1>
+
+        <p class="eco-rental-bike-code">
+            Bicycle {{ rental.bicycle.code }}
+        </p>
+
+        <span class="eco-status eco-status-{{ rental.status }}">
+            {{ rental.get_status_display }}
+        </span>
+
+    </header>
+
+
+    <!-- COMPLETED RIDE MESSAGE -->
+    {% if rental.status == "completed" %}
+
+    <div class="eco-notice eco-notice-info eco-completed-notice">
+        <span aria-hidden="true">✓</span>
+        <div>
+            <h2>Ride Completed!</h2>
+            <p>Your bicycle has been returned successfully. Thank you for riding with EcoRide.</p>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    <!-- RIDE INFORMATION -->
+    <article class="eco-detail-card">
+
+        <div class="eco-detail-card-heading">
+            <div>
+                <span class="eco-eyebrow">Rental information</span>
+                <h2>Your ride summary</h2>
+            </div>
+
+            <span class="eco-detail-bike-icon" aria-hidden="true">
+                🚲
+            </span>
+        </div>
+
+
+        <div class="eco-detail-line">
+            <span>Pickup station</span>
+            <strong>{{ rental.start_station.name }}</strong>
+        </div>
+
+
+        <div class="eco-detail-line">
+            <span>Return station</span>
+            <strong>
+                {{ rental.end_station.name|default:"Not returned yet" }}
+            </strong>
+        </div>
+
+
+        <div class="eco-detail-line">
+            <span>Started</span>
+            <strong>
+                {{ rental.started_at|date:"M j, Y · g:i a"|default:"After payment confirmation" }}
+            </strong>
+        </div>
+
+
+        {% if rental.status == "active" and rental.started_at %}
+
+        <div class="eco-duration-panel">
+            <span>Current ride duration</span>
+            <strong id="ride-duration">Calculating...</strong>
+        </div>
+
+        {% endif %}
+
+
+        <div class="eco-detail-line">
+            <span>Fare</span>
+            <strong class="eco-detail-fare">
+                ₹{{ rental.amount_display|floatformat:2 }}
+            </strong>
+        </div>
+
+
+        {% if rental.status == "completed" and rental.started_at and rental.ended_at %}
+
+        <div class="eco-duration-panel">
+            <span>Total ride duration</span>
+            <strong id="completed-duration">Calculating...</strong>
+        </div>
+
+        {% endif %}
+
+
+        {% if rental.payment %}
+
+        <div class="eco-detail-line">
+            <span>Payment status</span>
+            <strong>{{ rental.payment.get_status_display }}</strong>
+        </div>
+
+        {% endif %}
+
+
+        <!-- PENDING PAYMENT -->
+        {% if rental.status == "pending_payment" %}
+
+        <div class="eco-rental-action-panel">
+
+            <span class="eco-eyebrow">Complete your reservation</span>
+
+            <h3>One step away from your ride!</h3>
+
+            <p>
+                Complete secure Razorpay checkout to activate your rental.
+            </p>
+
+            <a
+                class="eco-primary-btn eco-full-button"
+                href="{% url 'retry_checkout' rental.id %}"
+            >
+                Continue payment →
+            </a>
+
+            <form
+                method="post"
+                action="{% url 'cancel_checkout' rental.id %}"
+                onsubmit="return confirm('Are you sure you want to cancel this reservation?');"
+            >
+                {% csrf_token %}
+
+                <button class="eco-cancel-button" type="submit">
+                    Cancel reservation
+                </button>
+            </form>
+
+        </div>
+
+        {% elif rental.status == "active" %}
+
+        <!-- RETURN BICYCLE -->
+        <div class="eco-rental-action-panel">
+
+            <span class="eco-eyebrow">Finish your journey</span>
+
+            <h3>Return your bicycle</h3>
+
+            <p>
+                Select an active EcoRide station where you want to return your bicycle.
+            </p>
+
+            <form
+                method="post"
+                action="{% url 'return_bicycle' rental.id %}"
+                class="eco-return-form"
+            >
+
+                {% csrf_token %}
+
+                <label for="station_id">
+                    Choose a return station
+                </label>
+
+                <select id="station_id" name="station_id" required>
+
+                    {% for station in active_stations %}
+
+                    <option value="{{ station.id }}">
+                        {{ station.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <button class="eco-primary-btn" type="submit">
+                    Return bicycle →
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    </article>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const activeTimer = document.getElementById("ride-duration");
+    const completedTimer = document.getElementById("completed-duration");
+
+    function formatDuration(totalSeconds) {
+
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        return String(hours).padStart(2, "0") + ":" +
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+
+    // ACTIVE RIDE TIMER
+    if (activeTimer) {
+
+        const startedAt = new Date(
+            "{{ rental.started_at|date:'c' }}"
+        ).getTime();
+
+        function updateActiveDuration() {
+
+            const elapsed = Math.max(
+                0,
+                Math.floor((Date.now() - startedAt) / 1000)
+            );
+
+            activeTimer.textContent = formatDuration(elapsed);
+        }
+
+        updateActiveDuration();
+        setInterval(updateActiveDuration, 1000);
+    }
+
+
+    // COMPLETED RIDE DURATION
+    if (completedTimer) {
+
+        const startedAt = new Date(
+            "{{ rental.started_at|date:'c' }}"
+        ).getTime();
+
+        const endedAt = new Date(
+            "{{ rental.ended_at|date:'c' }}"
+        ).getTime();
+
+        if (
+            Number.isFinite(startedAt) &&
+            Number.isFinite(endedAt) &&
+            endedAt >= startedAt
+        ) {
+
+            const duration = Math.floor(
+                (endedAt - startedAt) / 1000
+            );
+
+            completedTimer.textContent = formatDuration(duration);
+
+        } else {
+
+            completedTimer.textContent = "Unavailable";
+
+        }
+    }
+
+});
+</script>
+
+{% endblock %}

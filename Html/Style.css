@@ -1,0 +1,18 @@
+/* ID Selector */
+#id_name{
+    align-items: center;
+    color: yellow;
+}
+/* Class Selector */
+.class_name{
+    align-items: center;
+    color: red;
+}
+/* Grouping Selector */
+h3,h2{
+    color: greenyellow;
+}
+/* Type Selector */
+h6{
+    color: aqua;
+}

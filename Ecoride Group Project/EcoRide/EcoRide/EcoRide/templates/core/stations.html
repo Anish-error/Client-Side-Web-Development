@@ -1,0 +1,290 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Pune Bicycle Stations — EcoRide{% endblock %}
+
+{% block design_styles %}
+<link rel="stylesheet" href="{% static 'core/integrated/Stations.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= STATION PAGE INTRO ================= -->
+<section class="station-intro">
+
+  <span class="eco-eyebrow">Explore Pune with EcoRide</span>
+
+  <h1>Find your next ride.</h1>
+
+  <p>
+    Discover EcoRide stations across Pune, check live bicycle
+    availability, and choose where your journey begins.
+  </p>
+
+  <div class="station-intro-highlights">
+    <span>🚲 Convenient bicycle rentals</span>
+    <span>📍 Multiple Pune stations</span>
+    <span>₹20 per ride</span>
+  </div>
+
+</section>
+
+
+<!-- ================= SEARCH AND FILTERS ================= -->
+<section class="station-controls" aria-label="Search and filter stations">
+
+  <label class="search-form" for="station-search">
+    <span class="search-icon" aria-hidden="true">⌕</span>
+
+    <input
+      type="search"
+      id="station-search"
+      placeholder="Search by station or neighborhood..."
+      autocomplete="off"
+    >
+  </label>
+
+  <div class="filters" role="group" aria-label="Filter stations">
+
+    <button
+      class="filter active"
+      type="button"
+      data-station-filter="all"
+      aria-pressed="true"
+    >
+      All stations
+    </button>
+
+    <button
+      class="filter"
+      type="button"
+      data-station-filter="available"
+      aria-pressed="false"
+    >
+      Available Rides
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= STATION LIST AND MAP ================= -->
+<section class="station-content">
+
+  <!-- STATION LIST -->
+  <section class="station-list" aria-label="Pune EcoRide stations">
+
+    <header class="list-header">
+
+      <div>
+        <span class="eco-eyebrow">Choose your starting point</span>
+        <h2 id="station-result-count">
+          {{ stations|length }} stations found
+        </h2>
+      </div>
+
+    </header>
+
+
+    <!-- Individual Station Cards -->
+    <div class="station-cards">
+
+      {% for station in stations %}
+
+      <article
+        class="station-card"
+        data-station-card
+        data-name="{{ station.name|lower }}"
+        data-address="{{ station.address|lower }}"
+        data-available="{{ station.available_count }}"
+      >
+
+        <header class="card-header">
+
+          <div>
+
+            <div class="station-title">
+
+              <h3>{{ station.name }}</h3>
+
+              <span class="status {% if station.available_count %}available{% else %}limited{% endif %}">
+
+                <span class="status-dot"></span>
+
+                {% if station.available_count %}
+                  Bikes available
+                {% else %}
+                  No bikes
+                {% endif %}
+
+              </span>
+
+            </div>
+
+            <p class="location">
+              {{ station.address }}
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <!-- Station Availability -->
+        <div class="station-stats">
+
+          <div class="stat">
+
+            <div class="stat-icon bike-icon" aria-hidden="true">
+              🚲
+            </div>
+
+            <div>
+              <strong>{{ station.available_count }}</strong>
+              <span>Available Bicycles</span>
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon slot-icon" aria-hidden="true">
+              ⌂
+            </div>
+
+            <div>
+              <strong>
+                {{ station.docked_count }}/{{ station.capacity }}
+              </strong>
+              <span>Docked / capacity</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Station Actions -->
+        <footer class="card-footer">
+
+          <span class="station-coordinates">
+            {{ station.latitude }}, {{ station.longitude }}
+          </span>
+
+          <div class="station-actions">
+
+            {% if station.available_count %}
+
+              <a
+                class="station-directions start-ride-btn"
+                href="{% url 'start_ride' station.id %}"
+              >
+                Start Ride <span aria-hidden="true">→</span>
+              </a>
+
+            {% else %}
+
+              <span class="station-unavailable">
+                Currently unavailable
+              </span>
+
+            {% endif %}
+
+            <a
+              class="view-btn"
+              href="{% url 'station_detail' station.id %}"
+            >
+              View bikes <span aria-hidden="true">›</span>
+            </a>
+
+          </div>
+
+        </footer>
+
+      </article>
+
+      {% empty %}
+
+      <p class="eco-empty">
+        No Pune stations are active yet.
+        Please check back soon!
+      </p>
+
+      {% endfor %}
+
+
+      <!-- Search Empty State -->
+      <p
+        class="eco-empty station-no-results"
+        id="station-no-results"
+        hidden
+      >
+        No stations match your search.
+        Try another station name or neighborhood.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTERACTIVE MAP -->
+  <aside
+    class="map-container"
+    aria-label="Interactive EcoRide station map"
+  >
+
+    <div class="map-heading">
+
+      <div>
+        <span class="eco-eyebrow">Explore the map</span>
+        <h2>EcoRide across Pune</h2>
+        <p>Find stations and explore their locations.</p>
+      </div>
+
+    </div>
+
+    <button type="button" id="my-location-btn">
+      📍 Show My Current Location
+    </button>
+
+    <div
+      id="station-map"
+      class="map"
+      data-map-data-url="{% url 'station_map_data' %}"
+      role="region"
+      aria-label="Interactive map of EcoRide stations in Pune"
+      tabindex="0"
+    ></div>
+
+    <div
+      class="map-status"
+      id="map-status"
+      role="status"
+      aria-live="polite"
+    >
+      Loading EcoRide map...
+    </div>
+
+  </aside>
+
+</section>
+
+
+<!-- Station Map Data -->
+{{ station_map_data|json_script:"station-data" }}
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="{% static 'core/integrated-stations.js' %}" defer></script>
+
+{% endblock %}

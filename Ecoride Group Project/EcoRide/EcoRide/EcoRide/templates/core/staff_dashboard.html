@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}Operations Dashboard — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-admin-page">
+
+    <!-- PAGE HEADER -->
+    <header class="eco-admin-header">
+        <div>
+            <span class="eco-eyebrow">EcoRide operations</span>
+            <h1>Admin Dashboard</h1>
+            <p>Monitor your users, bicycles, stations, rides and payments.</p>
+        </div>
+
+        <span class="eco-admin-badge">Staff Control Panel</span>
+    </header>
+
+
+    <!-- MANAGEMENT -->
+    <section class="eco-admin-management">
+        <div>
+            <span class="eco-eyebrow">Manage your network</span>
+            <h2>Management</h2>
+            <p>Maintain your stations and bicycle fleet.</p>
+        </div>
+
+        <div class="eco-admin-actions">
+            <a class="eco-primary-btn" href="{% url 'manage_stations' %}">
+                Manage Stations →
+            </a>
+
+            <a class="eco-admin-secondary-btn" href="{% url 'manage_bicycles' %}">
+                Manage Bicycles →
+            </a>
+        </div>
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="eco-admin-stats">
+
+        <article class="eco-admin-stat-card">
+            <span class="eco-admin-stat-icon">👥</span>
+            <div>
+                <p>Total Users</p>
+                <strong>{{ total_users }}</strong>
+            </div>
+        </article>
+
+        <article class="eco-admin-stat-card">
+            <span class="eco-admin-stat-icon">🚲</span>
+            <div>
+                <p>Total Bicycles</p>
+                <strong>{{ total_bicycles }}</strong>
+            </div>
+        </article>
+
+        <article class="eco-admin-stat-card">
+            <span class="eco-admin-stat-icon">📍</span>
+            <div>
+                <p>Total Stations</p>
+                <strong>{{ total_stations }}</strong>
+            </div>
+        </article>
+
+        <article class="eco-admin-stat-card">
+            <span class="eco-admin-stat-icon">🛣️</span>
+            <div>
+                <p>Active Rentals</p>
+                <strong>{{ active_rentals }}</strong>
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- USERS -->
+    <section class="eco-admin-section">
+        <div class="eco-admin-section-heading">
+            <div>
+                <span class="eco-eyebrow">Account overview</span>
+                <h2>Users</h2>
+            </div>
+        </div>
+
+        <div class="eco-admin-table-wrap">
+            <table class="eco-admin-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Date Joined</th>
+                        <th>Staff</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td><strong>{{ user.username }}</strong></td>
+                        <td>{{ user.email|default:"—" }}</td>
+                        <td>{{ user.date_joined|date:"d M Y" }}</td>
+                        <td>
+                            <span class="eco-admin-label">
+                                {{ user.is_staff|yesno:"Yes,No" }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="eco-admin-empty">
+                            No users found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- BICYCLES -->
+    <section class="eco-admin-section">
+        <div class="eco-admin-section-heading">
+            <div>
+                <span class="eco-eyebrow">Fleet overview</span>
+                <h2>Bicycles</h2>
+            </div>
+
+            <a class="eco-text-link" href="{% url 'manage_bicycles' %}">
+                Manage fleet →
+            </a>
+        </div>
+
+        <div class="eco-admin-table-wrap">
+            <table class="eco-admin-table">
+                <thead>
+                    <tr>
+                        <th>Bike Code</th>
+                        <th>Station</th>
+                        <th>Status</th>
+                        <th>Electric</th>
+                        <th>Battery</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for bike in bicycles %}
+                    <tr>
+                        <td><strong>{{ bike.code }}</strong></td>
+                        <td>{{ bike.station.name }}</td>
+                        <td>
+                            <span class="eco-admin-label">
+                                {{ bike.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ bike.is_electric|yesno:"Yes,No" }}</td>
+                        <td>
+                            {% if bike.is_electric %}
+                                {{ bike.battery_level }}%
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="eco-admin-empty">
+                            No bicycles found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- STATIONS -->
+    <section class="eco-admin-section">
+        <div class="eco-admin-section-heading">
+            <div>
+                <span class="eco-eyebrow">Network overview</span>
+                <h2>Stations</h2>
+            </div>
+
+            <a class="eco-text-link" href="{% url 'manage_stations' %}">
+                Manage stations →
+            </a>
+        </div>
+
+        <div class="eco-admin-table-wrap">
+            <table class="eco-admin-table">
+                <thead>
+                    <tr>
+                        <th>Station</th>
+                        <th>Address</th>
+                        <th>Capacity</th>
+                        <th>Active</th>
+                        <th>Available Bikes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for station in stations %}
+                    <tr>
+                        <td><strong>{{ station.name }}</strong></td>
+                        <td>{{ station.address }}</td>
+                        <td>{{ station.capacity }}</td>
+                        <td>{{ station.is_active|yesno:"Yes,No" }}</td>
+                        <td>{{ station.available_bike_count }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="eco-admin-empty">
+                            No stations found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- RIDES -->
+    <section class="eco-admin-section">
+        <div class="eco-admin-section-heading">
+            <div>
+                <span class="eco-eyebrow">Rental activity</span>
+                <h2>Rides</h2>
+            </div>
+        </div>
+
+        <div class="eco-admin-table-wrap">
+            <table class="eco-admin-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Bicycle</th>
+                        <th>Start Station</th>
+                        <th>End Station</th>
+                        <th>Status</th>
+                        <th>Started</th>
+                        <th>Ended</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for rental in rentals %}
+                    <tr>
+                        <td>{{ rental.user.username }}</td>
+                        <td><strong>{{ rental.bicycle.code }}</strong></td>
+                        <td>{{ rental.start_station.name }}</td>
+                        <td>{{ rental.end_station.name|default:"—" }}</td>
+                        <td>
+                            <span class="eco-admin-label">
+                                {{ rental.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ rental.started_at|date:"d M Y, H:i"|default:"—" }}</td>
+                        <td>{{ rental.ended_at|date:"d M Y, H:i"|default:"—" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="eco-admin-empty">
+                            No rides found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- PAYMENTS -->
+    <section class="eco-admin-section">
+        <div class="eco-admin-section-heading">
+            <div>
+                <span class="eco-eyebrow">Transaction overview</span>
+                <h2>Payments</h2>
+            </div>
+        </div>
+
+        <div class="eco-admin-table-wrap">
+            <table class="eco-admin-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Rental</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for payment in payments %}
+                    <tr>
+                        <td>{{ payment.rental.user.username }}</td>
+                        <td>#{{ payment.rental.id }}</td>
+                        <td><strong>{{ payment.amount_display }}</strong></td>
+                        <td>{{ payment.currency }}</td>
+                        <td>
+                            <span class="eco-admin-label">
+                                {{ payment.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ payment.created_at|date:"d M Y, H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="eco-admin-empty">
+                            No payments found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</section>
+
+{% endblock %}

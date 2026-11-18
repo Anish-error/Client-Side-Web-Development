@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Join EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-auth-wrap">
+
+    <div class="eco-auth-card eco-signup-card">
+
+        <div class="eco-auth-icon" aria-hidden="true">
+            🚲
+        </div>
+
+        <span class="eco-eyebrow">Start riding greener</span>
+
+        <h1>Join EcoRide</h1>
+
+        <p class="eco-auth-description">
+            Create your account and discover a greener way
+            to travel around Pune.
+        </p>
+
+        <form method="post" class="eco-form-stack">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+
+                <div class="eco-auth-field">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="eco-help">
+                            {{ field.help_text|safe }}
+                        </div>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="eco-error">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+            <button
+                class="eco-primary-btn eco-auth-submit"
+                type="submit"
+            >
+                Create account →
+            </button>
+
+        </form>
+
+        <div class="eco-auth-divider"></div>
+
+        <p class="eco-auth-foot">
+            Already a member?
+            <a class="eco-text-link" href="{% url 'login' %}">
+                Sign in
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}EcoRide Pune — Ride smarter, move freely{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<section class="eco-hero">
+
+  <div class="eco-hero-copy">
+
+    <span class="eco-badge">
+      <span></span>
+      Now riding in Pune
+    </span>
+
+    <h1>
+      Your city.<br>
+      Your ride.<br>
+      <span>Your freedom.</span>
+    </h1>
+
+    <p>
+      Discover a smarter way to explore Pune.
+      Find a nearby bicycle, reserve it online,
+      and enjoy the freedom of two wheels.
+    </p>
+
+    <div class="eco-hero-actions">
+      <a class="eco-primary-btn" href="{% url 'stations' %}">
+        Find a bicycle <span aria-hidden="true">→</span>
+      </a>
+
+      <a class="eco-secondary-btn" href="#how-it-works">
+        <span aria-hidden="true">▶</span>
+        How it works
+      </a>
+    </div>
+
+    <div class="eco-hero-features">
+      <span>✓ Easy station-to-station rides</span>
+      <span>✓ Secure online checkout</span>
+      <span>✓ Simple ₹20 fare</span>
+    </div>
+
+  </div>
+
+  <div class="eco-hero-art" aria-label="EcoRide bicycle illustration">
+
+    <div class="eco-art-sun"></div>
+
+    <div class="eco-art-caption">
+      Pune looks good<br>
+      from two wheels.
+    </div>
+
+    <img
+      src="{% static 'core/integrated/cycle-removebg-preview.png' %}"
+      alt="EcoRide bicycle"
+    >
+
+    <div class="eco-art-label">
+      A little more city.<br>
+      A little less traffic.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FLEET STATISTICS ================= -->
+<section class="eco-stats" aria-label="EcoRide fleet statistics">
+
+  <div>
+    <strong>{{ station_count }}</strong>
+    <span>Active stations</span>
+  </div>
+
+  <div>
+    <strong>{{ bike_count }}</strong>
+    <span>Bicycles in the fleet</span>
+  </div>
+
+  <div>
+    <strong>{{ available_count }}</strong>
+    <span>Bikes ready to ride</span>
+  </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="eco-section" id="how-it-works">
+
+  <header class="eco-section-heading">
+
+    <span class="eco-eyebrow">A simpler way to move</span>
+
+    <h2>Three steps. One great ride.</h2>
+
+    <p>
+      Getting around Pune is easier with EcoRide.
+      Choose your station, reserve your bicycle,
+      and ride to your destination.
+    </p>
+
+  </header>
+
+  <div class="eco-step-grid">
+
+    <article class="eco-step">
+      <span>01</span>
+      <h3>Find your bicycle</h3>
+      <p>
+        Explore EcoRide stations and check bicycle
+        availability before heading out.
+      </p>
+    </article>
+
+    <article class="eco-step">
+      <span>02</span>
+      <h3>Reserve and pay</h3>
+      <p>
+        Choose an available bicycle and complete
+        your secure online payment.
+      </p>
+    </article>
+
+    <article class="eco-step">
+      <span>03</span>
+      <h3>Ride and return</h3>
+      <p>
+        Enjoy your journey and return the bicycle
+        at an active EcoRide station.
+      </p>
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= STATION SECTION ================= -->
+<section class="eco-station-section">
+
+  <div class="eco-section">
+
+    <header class="eco-section-heading eco-section-heading-row">
+
+      <div>
+        <span class="eco-eyebrow">Explore your city</span>
+        <h2>Start your ride nearby.</h2>
+        <p>
+          Find an EcoRide station and see how many
+          bicycles are currently available.
+        </p>
+      </div>
+
+      <a class="eco-text-link" href="{% url 'stations' %}">
+        Explore all stations →
+      </a>
+
+    </header>
+
+
+    <div class="eco-station-grid">
+
+      {% for station in stations %}
+
+        <a
+          class="eco-station-card"
+          href="{% url 'station_detail' station.id %}"
+          aria-label="View {{ station.name }} station"
+        >
+
+          <span class="eco-station-pin" aria-hidden="true">↗</span>
+
+          <strong>{{ station.name }}</strong>
+
+          <span>{{ station.address }}</span>
+
+          <b>
+            {{ station.available_count }} bikes available
+          </b>
+
+        </a>
+
+      {% empty %}
+
+        <p class="eco-empty">
+          Our stations are getting ready.
+          Please check back soon!
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+    <div class="eco-station-more">
+      <a class="eco-primary-btn" href="{% url 'stations' %}">
+        View all stations →
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRICING SECTION ================= -->
+<section class="eco-pricing" id="pricing">
+
+  <span class="eco-eyebrow">Simple and transparent</span>
+
+  <h2>Good rides. Simple prices.</h2>
+
+  <p>
+    No complicated pricing.
+    Reserve your bicycle and pay securely online.
+  </p>
+
+  <div class="eco-fare">
+    <strong>₹20</strong>
+    <span>per ride</span>
+  </div>
+
+  <a class="eco-primary-btn" href="{% url 'stations' %}">
+    Find your next ride →
+  </a>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Bicycle — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-manage-page">
+
+    <header class="eco-manage-header">
+        <a class="eco-back-link" href="{% url 'manage_bicycles' %}">
+            ← Back to Bicycle Management
+        </a>
+
+        <span class="eco-eyebrow">Fleet operations</span>
+        <h1>Edit Bicycle</h1>
+        <p>Update the details and settings for bicycle {{ bicycle.code }}.</p>
+    </header>
+
+    <section class="eco-manage-form-card">
+
+        <div class="eco-manage-section-heading">
+            <div>
+                <span class="eco-eyebrow">Bicycle details</span>
+                <h2>{{ bicycle.code }}</h2>
+                <p>Make your changes below and save when you're ready.</p>
+            </div>
+
+            <span class="eco-manage-icon" aria-hidden="true">🚲</span>
+        </div>
+
+        <form method="post" class="eco-manage-form">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="eco-manage-field">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="eco-help">
+                            {{ field.help_text }}
+                        </div>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="eco-error">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+            <div class="eco-edit-station-actions">
+
+                <button class="eco-primary-btn" type="submit">
+                    Save Changes →
+                </button>
+
+                <a
+                    class="eco-admin-secondary-btn"
+                    href="{% url 'manage_bicycles' %}"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</section>
+
+{% endblock %}

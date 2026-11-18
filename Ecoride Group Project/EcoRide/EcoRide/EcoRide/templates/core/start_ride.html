@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Start Ride — EcoRide{% endblock %}
+
+{% block design_styles %}
+<style>
+    .ride-start-container {
+        max-width: 680px;
+        margin: 40px auto;
+        padding: 24px;
+    }
+
+    .scanner-panel {
+        margin-top: 24px;
+        padding: 24px;
+        border: 1px solid #dce7df;
+        border-radius: 18px;
+        background: #fff;
+    }
+
+    #qr-reader {
+        width: 100%;
+        max-width: 500px;
+        margin: 18px auto;
+        overflow: hidden;
+    }
+
+    .ride-button {
+        display: inline-block;
+        padding: 12px 18px;
+        margin: 6px 6px 6px 0;
+        border: 0;
+        border-radius: 10px;
+        background: #176b45;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .ride-button.secondary {
+        background: #edf3ef;
+        color: #194d35;
+    }
+
+    #scan-status {
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #f3f7f4;
+        overflow-wrap: anywhere;
+    }
+
+    #bike-confirmation {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid #c8dfce;
+        border-radius: 12px;
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="ride-start-container">
+    <p>EcoRide · Pune</p>
+    <h1>Start your ride</h1>
+
+    <p>
+        Starting station:
+        <strong>{{ station.name }}</strong>
+    </p>
+
+
+    <section class="scanner-panel">
+        <h2>Your bicycle</h2>
+        <p>Open the camera preview, then click Start Ride.</p>
+
+
+        <video id="camera-preview" autoplay playsinline muted
+            style="width: 100%; max-width: 500px; border-radius: 12px; background: #111;"></video>
+
+        <label for="bicycle-choice">Choose an available bicycle:</label>
+
+
+        <form id="start-ride-form" method="post">
+            {% csrf_token %}
+
+            <label for="bicycle-choice">
+                Choose an available bicycle:
+            </label>
+
+            <select id="bicycle-choice" name="bicycle-choice" required>
+                <option value="">Select a bicycle</option>
+
+                {% for bicycle in bicycles %}
+                <option value="{{ bicycle.id }}">
+                    {{ bicycle.code }}
+                    {% if bicycle.is_electric %}
+                    (Electric)
+                    {% else %}
+                    (Standard)
+                    {% endif %}
+                    — Battery {{ bicycle.battery_level }}%
+                </option>
+                {% endfor %}
+            </select>
+
+            <button class="ride-button" id="confirm-start-ride" type="submit" hidden>
+                Start Ride
+            </button>
+        </form>
+
+
+        <p id="scan-status" role="status" aria-live="polite">
+            Camera not started yet.
+        </p>
+
+        <button class="ride-button" id="start-scanner" type="button">
+            Open Camera
+        </button>
+
+
+    </section>
+
+
+    <p>
+        <a href="{% url 'station_detail' station.id %}">Back to station</a>
+    </p>
+</main>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("camera-preview");
+    const openCameraButton = document.getElementById("start-scanner");
+    const startRideForm = document.getElementById("start-ride-form");
+    const startRideButton = document.getElementById("confirm-start-ride");
+    const bicycleChoice = document.getElementById("bicycle-choice");
+    const statusBox = document.getElementById("scan-status");
+
+    let cameraStream = null;
+
+    function stopCamera() {
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(function (track) {
+                track.stop();
+            });
+            cameraStream = null;
+        }
+
+        video.srcObject = null;
+    }
+
+    openCameraButton.addEventListener("click", async function () {
+        if (!navigator.mediaDevices ||
+            !navigator.mediaDevices.getUserMedia) {
+            statusBox.textContent =
+                "Camera preview requires HTTPS or localhost. You can still select a bicycle.";
+            startRideButton.hidden = false;
+            return;
+        }
+
+        openCameraButton.disabled = true;
+
+        try {
+            cameraStream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "environment" },
+                audio: false
+            });
+
+            video.srcObject = cameraStream;
+
+            statusBox.textContent =
+                "Camera preview is ready. No QR code will be scanned.";
+
+            openCameraButton.hidden = true;
+            startRideButton.hidden = false;
+
+        } catch (error) {
+            statusBox.textContent =
+                "Camera unavailable or permission denied. You can still select a bicycle.";
+
+            startRideButton.hidden = false;
+
+        } finally {
+            openCameraButton.disabled = false;
+        }
+    });
+
+    startRideForm.addEventListener("submit", function (event) {
+        const bicycleId = bicycleChoice.value;
+
+        if (!bicycleId) {
+            event.preventDefault();
+            statusBox.textContent =
+                "Please choose an available bicycle first.";
+            return;
+        }
+
+        stopCamera();
+
+        const rentalUrlTemplate = "{% url 'start_rental' 0 %}";
+
+        startRideForm.action = rentalUrlTemplate.replace(
+            "/bicycles/0/rent/",
+            "/bicycles/" + encodeURIComponent(bicycleId) + "/rent/"
+        );
+    });
+
+    window.addEventListener("beforeunload", stopCamera);
+});
+</script>
+{% endblock %}

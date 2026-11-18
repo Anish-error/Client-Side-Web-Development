@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Mock Checkout — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-checkout-page">
+
+    <div class="eco-checkout-card">
+
+        <header class="eco-checkout-header">
+            <span class="eco-checkout-icon" aria-hidden="true">🔒</span>
+            <span class="eco-eyebrow">Development environment</span>
+            <h1>EcoRide Checkout</h1>
+            <p>Review your rental details and simulate a payment.</p>
+        </header>
+
+        <div class="eco-checkout-notice">
+            <strong>Test payment only</strong>
+            <p>This is a development checkout. No real money will be charged.</p>
+        </div>
+
+        <div class="eco-checkout-summary">
+            <h2>Rental Summary</h2>
+
+            <div class="eco-checkout-detail">
+                <span>Rental ID</span>
+                <strong>#{{ rental.id }}</strong>
+            </div>
+
+            <div class="eco-checkout-detail">
+                <span>Bicycle</span>
+                <strong>{{ rental.bicycle.code }}</strong>
+            </div>
+
+            <div class="eco-checkout-detail">
+                <span>Amount</span>
+                <strong>₹{{ payment.amount_display }}</strong>
+            </div>
+
+            <div class="eco-checkout-detail">
+                <span>Payment Status</span>
+                <strong>{{ payment.get_status_display }}</strong>
+            </div>
+
+            <div class="eco-checkout-total">
+                <span>Total to Pay</span>
+                <strong>₹{{ payment.amount_display }}</strong>
+            </div>
+        </div>
+
+        {% if messages %}
+            <div class="eco-checkout-messages">
+                {% for message in messages %}
+                    <div class="eco-checkout-message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if rental.status == "pending_payment" %}
+
+            <form method="post" class="eco-checkout-actions">
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    name="action"
+                    value="success"
+                    class="eco-checkout-success"
+                >
+                    <span>✓</span>
+                    Simulate Successful Payment
+                </button>
+
+                <button
+                    type="submit"
+                    name="action"
+                    value="fail"
+                    class="eco-checkout-fail"
+                >
+                    Simulate Failed Payment
+                </button>
+
+                <button
+                    type="submit"
+                    name="action"
+                    value="cancel"
+                    class="eco-checkout-cancel"
+                >
+                    Cancel Checkout
+                </button>
+            </form>
+
+        {% else %}
+
+            <div class="eco-checkout-complete">
+                <span aria-hidden="true">✓</span>
+                <p>This rental is no longer awaiting payment.</p>
+            </div>
+
+            <a
+                href="{% url 'rental_detail' rental.id %}"
+                class="eco-checkout-view"
+            >
+                View Rental →
+            </a>
+
+        {% endif %}
+
+        <p class="eco-checkout-footer">
+            EcoRide · Sustainable journeys, one ride at a time.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

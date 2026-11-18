@@ -1,0 +1,202 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ station.name }} — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<!-- ================= STATION HEADER ================= -->
+<section class="eco-page-heading">
+
+  <a class="eco-back-link" href="{% url 'stations' %}">
+    ← All Pune stations
+  </a>
+
+  <span class="eco-eyebrow">EcoRide pickup point</span>
+
+  <h1>{{ station.name }}</h1>
+
+  <p>{{ station.address }}</p>
+
+  <div class="station-detail-highlights">
+
+    <span>
+      📍 {{ docked_count }}/{{ station.capacity }} docks in use
+    </span>
+
+    <span>
+      🚲 {{ bicycles|length }} bicycles listed
+    </span>
+
+    <span>
+      ₹20 per ride
+    </span>
+
+  </div>
+
+  <a
+    class="eco-map-link"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://www.google.com/maps/dir/?api=1&amp;destination={{ station.latitude }},{{ station.longitude }}"
+  >
+    Get directions in Google Maps ↗
+  </a>
+
+</section>
+
+
+<!-- ================= BICYCLE SELECTION ================= -->
+<section class="eco-content-section">
+
+  <header class="eco-section-heading eco-section-heading-row">
+
+    <div>
+      <span class="eco-eyebrow">Your journey starts here</span>
+      <h2>Choose your bicycle</h2>
+      <p>Select an available bicycle to begin your EcoRide journey.</p>
+    </div>
+
+    <span class="eco-fare-small">
+      ₹20 <small>per ride</small>
+    </span>
+
+  </header>
+
+
+  <div class="eco-bike-grid">
+
+    {% for bicycle in bicycles %}
+
+      <article class="eco-bike-card">
+
+        <!-- Bicycle Information -->
+        <div class="eco-bike-card-top">
+
+          <span class="eco-bike-symbol" aria-hidden="true">
+            🚲
+          </span>
+
+          <span class="eco-bike-status">
+            {{ bicycle.get_status_display }}
+          </span>
+
+        </div>
+
+
+        <h3>{{ bicycle.code }}</h3>
+
+
+        {% if bicycle.is_electric %}
+
+          <p class="bike-type">
+            Electric bicycle
+          </p>
+
+          <div class="bike-battery">
+            <span>Battery level</span>
+            <strong>{{ bicycle.battery_level }}%</strong>
+          </div>
+
+          <div class="battery-track">
+            <div
+              class="battery-fill"
+              style="width: {{ bicycle.battery_level }}%;"
+            ></div>
+          </div>
+
+        {% else %}
+
+          <p class="bike-type">
+            Classic city bicycle
+          </p>
+
+        {% endif %}
+
+
+        <!-- Bicycle Rental Action -->
+        <div class="eco-bike-action">
+
+          {% if bicycle.status == "available" %}
+
+            {% if user.is_authenticated %}
+
+              {% if payments_enabled %}
+
+                <form
+                  method="post"
+                  action="{% url 'start_rental' bicycle.id %}"
+                >
+                  {% csrf_token %}
+
+                  <button
+                    class="eco-primary-btn eco-full-button"
+                    type="submit"
+                  >
+                    Reserve &amp; pay ₹20
+                  </button>
+
+                </form>
+
+              {% else %}
+
+                <button
+                  class="eco-primary-btn eco-full-button"
+                  disabled
+                >
+                  Checkout setup pending
+                </button>
+
+                <p class="eco-small-note">
+                  Online checkout is not configured yet.
+                </p>
+
+              {% endif %}
+
+            {% else %}
+
+              <a
+                class="eco-primary-btn eco-full-button"
+                href="{% url 'login' %}?next={{ request.path|urlencode }}"
+              >
+                Sign in to rent
+              </a>
+
+            {% endif %}
+
+          {% else %}
+
+            <button
+              class="eco-primary-btn eco-full-button"
+              disabled
+            >
+              Currently unavailable
+            </button>
+
+          {% endif %}
+
+        </div>
+
+      </article>
+
+    {% empty %}
+
+      <div class="eco-empty">
+        <h3>No bicycles available yet</h3>
+        <p>
+          There are currently no bicycles listed at this station.
+          Please explore another EcoRide station.
+        </p>
+
+        <a class="eco-primary-btn" href="{% url 'stations' %}">
+          Explore other stations →
+        </a>
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}

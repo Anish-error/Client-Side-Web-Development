@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}Bicycle Management — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-manage-page">
+
+    <header class="eco-manage-header">
+        <a class="eco-back-link" href="{% url 'staff_dashboard' %}">
+            ← Back to Staff Dashboard
+        </a>
+
+        <span class="eco-eyebrow">Fleet operations</span>
+        <h1>Bicycle Management</h1>
+        <p>Add, monitor, and manage bicycles across your EcoRide stations.</p>
+    </header>
+
+    <!-- Add Bicycle Form -->
+    <section class="eco-manage-form-card">
+
+        <div class="eco-manage-section-heading">
+            <div>
+                <span class="eco-eyebrow">Expand your fleet</span>
+                <h2>Add New Bicycle</h2>
+                <p>Enter the bicycle details to add it to your network.</p>
+            </div>
+
+            <span class="eco-manage-icon" aria-hidden="true">🚲</span>
+        </div>
+
+        <form method="post" class="eco-manage-form">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="eco-manage-field">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="eco-help">
+                            {{ field.help_text }}
+                        </div>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="eco-error">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+            <button class="eco-primary-btn" type="submit">
+                Add Bicycle →
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Bicycle List -->
+    <section class="eco-managed-list">
+
+        <div class="eco-manage-section-heading">
+            <div>
+                <span class="eco-eyebrow">Your fleet</span>
+                <h2>All Bicycles</h2>
+                <p>View and manage the bicycles registered in EcoRide.</p>
+            </div>
+        </div>
+
+        <div class="eco-managed-bicycle-grid">
+
+            {% for bicycle in bicycles %}
+
+                <article class="eco-managed-bicycle-card">
+
+                    <div class="eco-managed-bicycle-top">
+
+                        <span class="eco-managed-bicycle-icon" aria-hidden="true">
+                            🚲
+                        </span>
+
+                        {% if bicycle.status == "available" %}
+                            <span class="eco-status-badge eco-status-active">
+                                Available
+                            </span>
+                        {% elif bicycle.status == "maintenance" %}
+                            <span class="eco-status-badge eco-status-inactive">
+                                Maintenance
+                            </span>
+                        {% elif bicycle.status == "reserved" %}
+                            <span class="eco-status-badge eco-status-pending">
+                                Reserved
+                            </span>
+                        {% elif bicycle.status == "rented" %}
+                            <span class="eco-status-badge eco-status-rented">
+                                Rented
+                            </span>
+                        {% else %}
+                            <span class="eco-status-badge">
+                                {{ bicycle.get_status_display }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <h3>{{ bicycle.code }}</h3>
+
+                    <div class="eco-managed-bicycle-details">
+
+                        <div>
+                            <span>Station</span>
+                            <strong>{{ bicycle.station.name }}</strong>
+                        </div>
+
+                        <div>
+                            <span>Type</span>
+                            <strong>
+                                {% if bicycle.is_electric %}
+                                    Electric Bicycle
+                                {% else %}
+                                    Classic Bicycle
+                                {% endif %}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Battery</span>
+                            <strong>{{ bicycle.battery_level }}%</strong>
+                        </div>
+
+                        <div>
+                            <span>Status</span>
+                            <strong>{{ bicycle.get_status_display }}</strong>
+                        </div>
+
+                    </div>
+
+                    {% if bicycle.is_electric %}
+                        <div class="eco-bicycle-battery-track">
+                            <div
+                                class="eco-bicycle-battery-fill"
+                                style="width: {{ bicycle.battery_level }}%;"
+                            ></div>
+                        </div>
+                    {% endif %}
+
+                    <div class="eco-managed-bicycle-actions">
+
+                        <a
+                            class="eco-admin-secondary-btn"
+                            href="{% url 'edit_bicycle' bicycle.id %}"
+                        >
+                            Edit Bicycle
+                        </a>
+
+                        {% if bicycle.status == "available" %}
+
+                            <form
+                                method="post"
+                                action="{% url 'deactivate_bicycle' bicycle.id %}"
+                                onsubmit="return confirm('Move this bicycle to maintenance?');"
+                            >
+                                {% csrf_token %}
+
+                                <button class="eco-danger-btn" type="submit">
+                                    Deactivate
+                                </button>
+                            </form>
+
+                        {% elif bicycle.status == "maintenance" %}
+
+                            <form
+                                method="post"
+                                action="{% url 'reactivate_bicycle' bicycle.id %}"
+                                onsubmit="return confirm('Make this bicycle available again?');"
+                            >
+                                {% csrf_token %}
+
+                                <button class="eco-primary-btn" type="submit">
+                                    Reactivate
+                                </button>
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="eco-managed-empty">
+                    <span aria-hidden="true">🚲</span>
+                    <h3>No bicycles added yet</h3>
+                    <p>Add your first bicycle using the form above.</p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

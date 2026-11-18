@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}My Rides — EcoRide Pune{% endblock %}
+
+{% block content %}
+
+<section class="eco-dashboard">
+
+    <!-- DASHBOARD INTRO -->
+    <header class="eco-dashboard-head">
+        <span class="eco-eyebrow">Rider dashboard</span>
+
+        <h1>Your rides. Your city. Your freedom.</h1>
+
+        <p>
+            Welcome back, {{ user.username }}.
+            Ready to explore Pune on two wheels?
+        </p>
+
+        <a class="eco-primary-btn" href="{% url 'stations' %}">
+            Find a bicycle <span aria-hidden="true">→</span>
+        </a>
+    </header>
+
+
+    <!-- ACTIVE RIDE -->
+    {% if open_rental %}
+
+    <section class="eco-active-ride-panel">
+
+        <div class="eco-active-ride-content">
+
+            <span class="eco-eyebrow">
+                {% if open_rental.status == "active" %}
+                    Ride in progress
+                {% else %}
+                    Payment pending
+                {% endif %}
+            </span>
+
+            <h2>{{ open_rental.bicycle.code }}</h2>
+
+            <p class="eco-active-bike-location">
+                <span aria-hidden="true">📍</span>
+                {{ open_rental.start_station.name }}
+            </p>
+
+            <span class="eco-status eco-status-{{ open_rental.status }}">
+                {{ open_rental.get_status_display }}
+            </span>
+
+        </div>
+
+        <div class="eco-active-ride-action">
+
+            <span class="eco-active-ride-icon" aria-hidden="true">
+                🚲
+            </span>
+
+            <a
+                class="eco-primary-btn eco-secondary-btn"
+                href="{% url 'rental_detail' open_rental.id %}"
+            >
+                View ride <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+    {% else %}
+
+    <!-- NO ACTIVE RIDE -->
+    <section class="eco-no-active-ride">
+
+        <div>
+            <span class="eco-eyebrow">Ready when you are</span>
+            <h2>No active ride right now.</h2>
+            <p>Find an available bicycle and start exploring Pune.</p>
+        </div>
+
+        <a class="eco-primary-btn" href="{% url 'stations' %}">
+            Explore stations <span aria-hidden="true">→</span>
+        </a>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- RIDE HISTORY -->
+    <section class="eco-ride-history">
+
+        <header class="eco-section-heading eco-section-heading-row">
+
+            <div>
+                <span class="eco-eyebrow">Your journey</span>
+                <h2>Ride history</h2>
+                <p>Keep track of your previous and current rentals.</p>
+            </div>
+
+            <a class="eco-text-link" href="{% url 'stations' %}">
+                Find another ride →
+            </a>
+
+        </header>
+
+
+        <div class="eco-table-wrap">
+
+            <table class="eco-table">
+
+                <thead>
+                    <tr>
+                        <th>Bike</th>
+                        <th>Pickup station</th>
+                        <th>Date</th>
+                        <th>Fare</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for rental in rentals %}
+
+                    <tr>
+
+                        <td>
+                            <strong>{{ rental.bicycle.code }}</strong>
+                        </td>
+
+                        <td>{{ rental.start_station.name }}</td>
+
+                        <td>
+                            {{ rental.created_at|date:"M j, Y · g:i a" }}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ₹{{ rental.amount_display|floatformat:2 }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="eco-status eco-status-{{ rental.status }}">
+                                {{ rental.get_status_display }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <a
+                                class="eco-text-link"
+                                href="{% url 'rental_detail' rental.id %}"
+                            >
+                                View details →
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="6" class="eco-empty-history">
+                            <span aria-hidden="true">🚲</span>
+                            <strong>No rides yet.</strong>
+                            <p>Your first Pune ride is waiting for you.</p>
+                            <a class="eco-text-link" href="{% url 'stations' %}">
+                                Explore stations →
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

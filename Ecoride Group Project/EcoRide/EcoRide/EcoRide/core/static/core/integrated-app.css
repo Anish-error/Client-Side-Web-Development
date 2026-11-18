@@ -1,0 +1,2552 @@
+.logo-accent{color:#0bb985!important}
+.inline-form{display:inline;margin:0}
+.nav-logout{border:0;background:transparent;color:#486259;font:inherit;font-weight:600;cursor:pointer}
+.eco-footer{min-height:105px;padding:22px max(calc((100vw - 1200px)/2),5%);display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid #e6ece8;background:#fff}
+.eco-footer>span{color:#758278;font-size:.88rem}
+.eco-messages{position:relative;z-index:10;width:min(1100px,92%);margin:16px auto}
+.eco-notice{margin:8px 0;padding:13px 16px;border:1px solid #d4ead9;border-radius:10px;background:#edf8ef;color:#285b3e;font-weight:600}
+.eco-notice-error{border-color:#f0d2cf;background:#fff0ee;color:#8f3932}
+.eco-notice-warning{border-color:#f2dfbd;background:#fff7e8;color:#79571e}
+.eco-notice-info{border-color:#d7e3ef;background:#eff6fc;color:#36597a}
+.eco-hero{min-height:540px;padding:76px max(calc((100vw - 1200px)/2),6%);display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:65px;background:linear-gradient(130deg,#f6faf6 0%,#edf6ec 100%)}
+.eco-hero-copy{max-width:580px}
+.eco-badge,.eco-eyebrow{display:inline-flex;align-items:center;gap:9px;color:#17865d;font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.eco-badge{padding:9px 13px;border:1px solid #d8ead8;border-radius:30px;background:#fff;letter-spacing:.04em;text-transform:none}
+.eco-badge>span{width:8px;height:8px;border-radius:50%;background:#20b879;box-shadow:0 0 0 4px #e6f8ed}
+.eco-hero h1{margin:23px 0 16px;color:#162a22;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:clamp(3.2rem,7vw,5.5rem);line-height:.98;letter-spacing:-.065em}
+.eco-hero h1>span{color:#0a9a69}
+.eco-hero-copy>p{max-width:520px;color:#61736b;font-size:1.12rem;line-height:1.75}
+.eco-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:27px}
+.eco-primary-btn,.eco-secondary-btn{min-height:48px;padding:13px 19px;display:inline-flex;align-items:center;justify-content:center;gap:11px;border:0;border-radius:10px;font:inherit;font-weight:750;text-decoration:none;cursor:pointer;transition:transform .18s,background .18s}
+.eco-primary-btn{background:#0bb985;color:white}
+.eco-primary-btn:hover{transform:translateY(-2px);background:#07895f;color:white}
+.eco-primary-btn:disabled{background:#a7b6ac;cursor:not-allowed;transform:none}
+.eco-secondary-btn{background:#fff;color:#2d4539;border:1px solid #dce8df}
+.eco-secondary-btn:hover{background:#f4faf5;color:#176b4e}
+.eco-hero-features{display:flex;flex-wrap:wrap;gap:15px 25px;margin-top:30px;color:#5a6c61;font-size:.87rem;font-weight:600}
+.eco-hero-art{position:relative;min-height:390px;display:grid;place-items:center;overflow:hidden;border:1px solid #dfebdc;border-radius:44% 56% 49% 51%/48% 47% 53% 52%;background:radial-gradient(circle at 74% 23%,#f4d18c 0 8%,transparent 8.3%),linear-gradient(145deg,#e7f2e3,#d1e8cd)}
+.eco-hero-art:before,.eco-hero-art:after{position:absolute;content:"";width:120%;height:43%;left:-10%;bottom:-10%;border-radius:50%;background:#b4d7a9;transform:rotate(-8deg)}
+.eco-hero-art:after{bottom:-23%;left:0;background:#91c48a;transform:rotate(8deg)}
+.eco-hero-art>img{position:relative;z-index:2;width:74%;max-height:300px;object-fit:contain;filter:drop-shadow(0 20px 14px rgba(30,75,47,.16))}
+.eco-art-sun{position:absolute;top:17%;right:19%;width:67px;height:67px;border-radius:50%;background:#f2c371}
+.eco-art-caption,.eco-art-label{position:absolute;z-index:3;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-weight:800;line-height:1.08;color:#29553d}
+.eco-art-caption{top:17%;left:12%;font-size:1.02rem;transform:rotate(-7deg)}
+.eco-art-label{right:7%;bottom:16%;font-size:.87rem;text-align:right}
+.eco-stats{width:min(980px,88%);margin:-1px auto 0;padding:23px 30px;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #e8eee8;border-radius:0 0 18px 18px;background:#fff;box-shadow:0 12px 30px rgba(32,70,44,.05)}
+.eco-stats>div{display:flex;flex-direction:column;align-items:center;gap:4px;border-right:1px solid #e8eee8}
+.eco-stats>div:last-child{border-right:0}
+.eco-stats strong{color:#17865d;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:1.85rem}
+.eco-stats span{color:#758278;font-size:.85rem}
+.eco-section{width:min(1160px,90%);margin:0 auto;padding:82px 0}
+.eco-section-heading{max-width:680px;margin:0 auto 34px;text-align:center}
+.eco-section-heading h2,.eco-pricing h2,.eco-page-heading h1{margin:12px 0;color:#1a2e24;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-.05em}
+.eco-section-heading p,.eco-pricing>p{color:#758278;font-size:1rem;line-height:1.7}
+.eco-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.eco-step{padding:25px;border:1px solid #e4ece4;border-radius:15px;background:#fff}
+.eco-step>span{display:grid;width:41px;height:41px;place-items:center;border-radius:13px;background:#e8f7ed;color:#0b9467;font-weight:800}
+.eco-step h3,.eco-bike-card h3{margin:20px 0 8px;color:#1a3025;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:1.22rem}
+.eco-step p,.eco-bike-card>p{margin:0;color:#758278;line-height:1.65}
+.eco-station-section{background:#f4f8f4}
+.eco-section-heading-row{max-width:none;display:flex;align-items:end;justify-content:space-between;text-align:left}
+.eco-text-link,.eco-map-link,.eco-back-link{color:#07895f;font-weight:750;text-decoration:none}
+.eco-text-link:hover,.eco-map-link:hover,.eco-back-link:hover{text-decoration:underline}
+.eco-station-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.eco-station-card{min-height:180px;padding:22px;display:flex;flex-direction:column;align-items:flex-start;gap:9px;border:1px solid #e4ece4;border-radius:14px;background:white;text-decoration:none;transition:transform .18s,box-shadow .18s}
+.eco-station-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(35,75,47,.09)}
+.eco-station-pin{display:grid;width:36px;height:36px;place-items:center;border-radius:11px;background:#e9f7ed;color:#07895f;font-weight:800}
+.eco-station-card strong{margin-top:5px;color:#1b3025;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:1.1rem}
+.eco-station-card>span:not(.eco-station-pin){color:#758278;font-size:.87rem}
+.eco-station-card b{margin-top:auto;color:#07895f;font-size:.85rem}
+.eco-empty{padding:22px;border:1px dashed #cbd9ce;border-radius:12px;color:#718077;background:#fff}
+.eco-pricing{padding:75px 24px;text-align:center;background:linear-gradient(140deg,#eff8ef,#f8fbf6)}
+.eco-pricing h2{margin-bottom:10px}
+.eco-pricing>p{margin-bottom:20px}
+.eco-fare{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:15px 0 22px}
+.eco-fare strong{color:#07895f;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:3.3rem}
+.eco-fare span{color:#758278}
+.eco-page-heading{width:min(1160px,90%);margin:0 auto;padding:50px 0 26px}
+.eco-page-heading h1{font-size:clamp(2.4rem,5vw,3.8rem)}
+.eco-page-heading>p{color:#718077;font-size:1.05rem}
+.eco-back-link{display:inline-block;margin-bottom:26px}
+.eco-map-link{display:inline-block;margin-top:4px}
+.eco-content-section{width:min(1160px,90%);margin:0 auto;padding:16px 0 75px}
+.eco-fare-small{color:#07895f;font-size:1.2rem;font-weight:800}
+.eco-fare-small small{color:#758278;font-size:.82rem;font-weight:500}
+.eco-bike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.eco-bike-card{padding:23px;border:1px solid #e3ebe3;border-radius:14px;background:white}
+.eco-bike-card-top{display:flex;align-items:center;justify-content:space-between}
+.eco-bike-symbol{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#e9f7ed;color:#07895f;font-size:1.1rem;font-weight:800}
+.eco-bike-status{padding:6px 10px;border-radius:20px;background:#e6f7ed;color:#168257;font-size:.75rem;font-weight:750}
+.eco-bike-status:not(:first-child){white-space:nowrap}
+.eco-full-button{width:100%;margin-top:16px}
+.eco-small-note{margin-top:11px!important;color:#78867d!important;font-size:.82rem!important}
+.eco-auth-wrap{min-height:65vh;padding:54px 20px;display:grid;place-items:center;background:#f4f8f4}
+.eco-auth-card{width:min(470px,100%);padding:33px;border:1px solid #e3ebe3;border-radius:17px;background:#fff;box-shadow:0 15px 42px rgba(38,77,49,.07)}
+.eco-auth-card h1{margin:12px 0 8px;color:#1a2e24;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:2.25rem;line-height:1.1}
+.eco-auth-card>p{color:#758278}
+.eco-form-stack{display:grid;gap:11px;margin-top:20px}
+.eco-form-stack label{margin-top:5px;color:#344a3c;font-size:.88rem;font-weight:700}
+.eco-form-stack input,.eco-form-stack select{width:100%;min-height:45px;padding:11px 12px;border:1px solid #d9e3da;border-radius:8px;background:white;color:#1d3427}
+.eco-form-stack input:focus{outline:2px solid #8bc9a6;border-color:transparent}
+.eco-auth-foot{margin:21px 0 0!important;text-align:center;font-size:.88rem}
+.eco-error,.eco-auth-card .errorlist{color:#a3483c;font-size:.82rem}
+.eco-help{color:#758278;font-size:.77rem;line-height:1.5}
+.eco-dashboard,.eco-staff{width:min(1160px,90%);margin:0 auto;padding:46px 0 76px}
+.eco-dashboard-head{margin-bottom:27px}
+.eco-dashboard-head h1{margin:10px 0;color:#1a2e24;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:-.05em}
+.eco-dashboard-head p{color:#758278}
+.eco-active-ride{margin:22px 0 32px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-radius:15px;background:#0b8d63;color:white}
+.eco-active-ride .eco-eyebrow{color:#d8f6df}
+.eco-active-ride h2{margin:6px 0;font-family:"Bricolage Grotesque",Manrope,sans-serif}
+.eco-active-ride p{margin:0;color:#e4f0e9}
+.eco-table-wrap{overflow-x:auto;border:1px solid #e3ebe3;border-radius:12px;background:white}
+.eco-table{width:100%;min-width:650px;border-collapse:collapse;text-align:left}
+.eco-table th,.eco-table td{padding:14px 16px;border-bottom:1px solid #e8eee8;font-size:.86rem}
+.eco-table th{background:#f6faf6;color:#78867d;font-size:.71rem;text-transform:uppercase;letter-spacing:.07em}
+.eco-table tr:last-child td{border-bottom:0}
+.eco-status{display:inline-block;padding:5px 9px;border-radius:20px;background:#eef2ef;color:#5e6f63;font-size:.73rem;font-weight:750}
+.eco-status-active,.eco-status-completed,.eco-status-paid{background:#e6f7ed;color:#188253}
+.eco-status-pending_payment,.eco-status-pending{background:#fff3dc;color:#94641b}
+.eco-status-canceled,.eco-status-failed{background:#fceae7;color:#9b453c}
+.eco-detail-card{width:min(720px,90%);margin:0 auto 75px;padding:25px;border:1px solid #e3ebe3;border-radius:15px;background:white}
+.eco-detail-line{padding:14px 0;display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #ebefeb}
+.eco-detail-line>span{color:#758278}
+.eco-detail-line strong{text-align:right}
+.eco-return-form{display:grid;gap:11px;margin-top:23px}
+.eco-return-form label{font-weight:700}
+.eco-return-form select{min-height:45px;padding:10px;border:1px solid #d9e3da;border-radius:8px;background:white}
+.eco-checkout-total{margin:25px 0 15px;padding:17px 0;display:flex;justify-content:space-between;border-top:1px solid #e7ece7;border-bottom:1px solid #e7ece7}
+.eco-checkout-total strong{color:#07895f;font-size:1.3rem}
+.eco-cancel-button{width:100%;margin-top:12px;padding:10px;border:0;background:transparent;color:#6b7770;font-weight:650;cursor:pointer}
+.eco-cancel-button:hover{color:#a3483c}
+.eco-checkout-status{min-height:23px;margin-top:10px!important;color:#9b453c!important;font-size:.83rem}
+.eco-section-heading-spaced{margin:38px 0 20px}
+.eco-metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:36px}
+.eco-metric-card{padding:20px;border:1px solid #e3ebe3;border-radius:13px;background:white}
+.eco-metric-card span{display:block;color:#758278;font-size:.85rem}
+.eco-metric-card strong{display:block;margin-top:5px;color:#18392a;font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:2rem}
+.map-status{padding:12px 14px;border:1px solid #e3ebe3;border-top:0;border-radius:0 0 13px 13px;background:#fff;color:#61736b;font-size:.82rem;line-height:1.5}
+.station-list>.station-card{position:relative;inset:auto;width:auto;max-width:100%;min-width:0;transform:none;z-index:auto;overflow-wrap:anywhere;color:#385579;background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid #edf1f5;box-shadow:0 6px 20px rgba(24,53,83,.05)}
+.station-list>.station-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(24,53,83,.08)}
+.station-list .station-title{margin:0}
+.station-list .card-footer{flex-wrap:wrap;gap:8px}
+.station-list .station-coordinates{min-width:0;overflow-wrap:anywhere}
+.eco-map-popup{min-width:180px;color:#263a2e;font:14px Arial,sans-serif}
+.eco-map-popup p{margin:6px 0;color:#61736b}
+.eco-map-popup b{color:#07895f}
+.eco-map-popup a{color:#07895f;font-weight:700}
+@media(max-width:850px){.eco-hero{grid-template-columns:1fr;gap:30px;padding:55px 6%}.eco-hero-art{min-height:310px}.eco-station-grid,.eco-bike-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.eco-hero{padding:43px 5%}.eco-hero h1{font-size:clamp(2.8rem,13vw,4.2rem)}.eco-hero-art{min-height:255px}.eco-stats{width:90%;padding:17px 6px}.eco-stats strong{font-size:1.4rem}.eco-stats span{font-size:.7rem;text-align:center}.eco-section{padding:57px 0}.eco-step-grid,.eco-station-grid,.eco-bike-grid,.eco-metric-grid{grid-template-columns:1fr}.eco-section-heading-row{align-items:flex-start;flex-direction:column;gap:10px}.eco-footer{align-items:flex-start;flex-direction:column;padding:23px 6%}.eco-active-ride{align-items:flex-start;flex-direction:column}.eco-auth-card{padding:25px 20px}.eco-detail-card{padding:18px}.nav-buttons{display:none}.mobile-menu.show{display:flex;width:min(94vw,420px);flex-direction:column;margin:8px auto;padding:12px;background:#fff}.mobile-menu.show a{width:100%;margin:0;padding:11px 12px}.station-content{grid-template-columns:1fr!important}.map{height:340px!important}.station-controls{align-items:stretch;flex-direction:column}.filters{overflow:auto}.filter{height:47px!important;padding:0 13px!important}.station-intro h1{font-size:34px!important}.eco-page-heading,.eco-content-section,.eco-dashboard,.eco-staff{width:90%}}
+
+
+
+/* =========================================
+   ECORIDE — GLOBAL DESIGN SYSTEM
+   ========================================= */
+
+:root {
+    --eco-primary: #176b45;
+    --eco-primary-dark: #105235;
+    --eco-primary-light: #e8f5ed;
+    --eco-accent: #a5d6b5;
+    --eco-bg: #f4f8f5;
+    --eco-surface: #ffffff;
+    --eco-text: #20352a;
+    --eco-muted: #718078;
+    --eco-border: #e1eae4;
+    --eco-danger: #d94343;
+    --eco-warning: #e9a23b;
+    --eco-radius: 14px;
+    --eco-shadow: 0 5px 22px rgba(20, 65, 42, 0.07);
+}
+
+/* Global reset */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--eco-bg);
+    color: var(--eco-text);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--eco-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--eco-primary-dark);
+}
+
+/* Page layout */
+
+main,
+.content,
+.page-container {
+    width: min(1200px, 92%);
+    margin: 35px auto;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+h1, h2, h3, h4 {
+    color: var(--eco-text);
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 750;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 19px;
+}
+
+/* Navigation */
+
+nav,
+.navbar {
+    background: var(--eco-primary-dark);
+    color: white;
+    padding: 14px 4%;
+}
+
+nav a,
+.navbar a {
+    color: white;
+    font-weight: 600;
+    margin-right: 18px;
+}
+
+nav a:hover,
+.navbar a:hover {
+    color: var(--eco-accent);
+}
+
+/* Buttons */
+
+button,
+.btn,
+input[type="submit"],
+input[type="button"] {
+    background: var(--eco-primary);
+    border: none;
+    border-radius: 9px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 650;
+    padding: 11px 19px;
+    transition: 0.2s ease;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background: var(--eco-primary-dark);
+    color: white;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+button[type="submit"] {
+    margin-top: 5px;
+}
+
+/* Delete and dangerous actions */
+
+button.danger,
+.btn-danger,
+.delete-button {
+    background: var(--eco-danger);
+}
+
+button.danger:hover,
+.btn-danger:hover,
+.delete-button:hover {
+    background: #b92d2d;
+}
+
+/* Forms */
+
+form {
+    margin-bottom: 20px;
+}
+
+form p {
+    margin-bottom: 16px;
+}
+
+label {
+    color: var(--eco-text);
+    display: block;
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 7px;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+select,
+textarea {
+    background: white;
+    border: 1px solid var(--eco-border);
+    border-radius: 9px;
+    color: var(--eco-text);
+    font: inherit;
+    outline: none;
+    padding: 12px 14px;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--eco-primary);
+    box-shadow: 0 0 0 3px rgba(23, 107, 69, 0.10);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--eco-primary);
+}
+
+.helptext {
+    color: var(--eco-muted);
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.errorlist {
+    color: var(--eco-danger);
+    font-size: 13px;
+    padding-left: 20px;
+}
+
+/* Cards */
+
+.card,
+.dashboard-card,
+.station-card,
+.rental-card,
+.payment-card,
+.management-card {
+    background: var(--eco-surface);
+    border: 1px solid var(--eco-border);
+    border-radius: var(--eco-radius);
+    box-shadow: var(--eco-shadow);
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.card:hover,
+.dashboard-card:hover,
+.management-card:hover {
+    box-shadow: 0 9px 28px rgba(20, 65, 42, 0.11);
+}
+
+/* Dashboard statistics */
+
+.dashboard-stats,
+.stats-grid,
+.stat-cards {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin: 25px 0;
+}
+
+.dashboard-stats > *,
+.stats-grid > *,
+.stat-cards > * {
+    background: white;
+    border: 1px solid var(--eco-border);
+    border-radius: var(--eco-radius);
+    box-shadow: var(--eco-shadow);
+    padding: 22px;
+}
+
+.dashboard-stats strong,
+.stats-grid strong,
+.stat-cards strong {
+    color: var(--eco-primary);
+    display: block;
+    font-size: 30px;
+    font-weight: 750;
+}
+
+/* Tables */
+
+.table-container {
+    background: white;
+    border: 1px solid var(--eco-border);
+    border-radius: var(--eco-radius);
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 650px;
+    width: 100%;
+}
+
+th {
+    background: var(--eco-primary-light);
+    color: var(--eco-primary-dark);
+    font-weight: 700;
+    text-align: left;
+}
+
+th, td {
+    border-bottom: 1px solid var(--eco-border);
+    padding: 14px 16px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #f7fbf8;
+}
+
+/* Status labels */
+
+.status,
+.badge,
+.status-label {
+    background: var(--eco-primary-light);
+    border-radius: 30px;
+    color: var(--eco-primary-dark);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 11px;
+}
+
+.status-danger,
+.badge-danger {
+    background: #fdeaea;
+    color: #b92d2d;
+}
+
+.status-warning,
+.badge-warning {
+    background: #fff3dc;
+    color: #946016;
+}
+
+/* Django messages */
+
+.messages {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.messages li,
+.alert {
+    background: var(--eco-primary-light);
+    border-left: 4px solid var(--eco-primary);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 13px 17px;
+}
+
+.messages .error,
+.alert-error {
+    background: #fdeaea;
+    border-color: var(--eco-danger);
+    color: #a52c2c;
+}
+
+.messages .warning,
+.alert-warning {
+    background: #fff3dc;
+    border-color: var(--eco-warning);
+}
+
+/* Action groups */
+
+.actions,
+.button-group,
+.management-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.actions form,
+.management-actions form {
+    margin: 0;
+}
+
+/* Empty states */
+
+.empty-state,
+.eco-empty {
+    background: white;
+    border: 1px dashed var(--eco-border);
+    border-radius: var(--eco-radius);
+    color: var(--eco-muted);
+    padding: 30px;
+    text-align: center;
+}
+
+/* Dividers */
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--eco-border);
+    margin: 25px 0;
+}
+
+/* Footer */
+
+footer {
+    color: var(--eco-muted);
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    main,
+    .content,
+    .page-container {
+        margin: 22px auto;
+        width: 94%;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .card,
+    .dashboard-card,
+    .station-card,
+    .management-card {
+        padding: 16px;
+    }
+
+    .dashboard-stats,
+    .stats-grid,
+    .stat-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    button,
+    .btn,
+    input[type="submit"] {
+        max-width: 100%;
+    }
+
+    .actions,
+    .button-group,
+    .management-actions {
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 420px) {
+    .dashboard-stats,
+    .stats-grid,
+    .stat-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   ECORIDE - BASE LAYOUT IMPROVEMENTS
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 9999;
+    padding: 12px 18px;
+    background: #174c35;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.eco-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+    .eco-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 18px;
+    }
+}
+
+
+/* =========================================
+   ECORIDE STATIONS PAGE IMPROVEMENTS
+========================================= */
+
+.station-intro-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.station-intro-highlights span {
+    padding: 9px 15px;
+    border-radius: 30px;
+    background: #eaf3e9;
+    color: #245b3d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.station-cards {
+    display: grid;
+    gap: 18px;
+}
+
+.station-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.station-unavailable {
+    color: #a34b36;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.map-heading {
+    margin-bottom: 16px;
+}
+
+.map-heading h2 {
+    margin: 6px 0;
+}
+
+.map-heading p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .station-intro-highlights {
+        gap: 8px;
+    }
+
+    .station-actions {
+        width: 100%;
+    }
+
+    .station-actions a {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+
+
+/* =========================================
+   STATION DETAIL PAGE
+========================================= */
+
+.station-detail-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.station-detail-highlights span {
+    padding: 9px 14px;
+    background: #eaf3e9;
+    color: #245b3d;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.eco-bike-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.eco-bike-card h3,
+.eco-bike-card p {
+    margin: 0;
+}
+
+.bike-type {
+    color: #65756a;
+    font-size: 14px;
+}
+
+.eco-bike-action {
+    margin-top: auto;
+}
+
+.eco-bike-action form {
+    width: 100%;
+}
+
+.eco-bike-action button,
+.eco-bike-action a {
+    width: 100%;
+    text-align: center;
+}
+
+.bike-battery {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #526459;
+}
+
+.battery-track {
+    width: 100%;
+    height: 8px;
+    background: #e5ebe5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.battery-fill {
+    height: 100%;
+    background: #368b58;
+    border-radius: inherit;
+}
+
+@media (max-width: 600px) {
+    .station-detail-highlights {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* =========================================
+   ECORIDE STATIONS PAGE - LAYOUT FIX
+========================================= */
+
+/* Keep the station page centered */
+main:has(.station-content) {
+    width: 92%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 38px 0 55px;
+}
+
+/* Keep the two columns inside the page */
+.station-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 55px;
+}
+
+/* Prevent either column from pushing the layout */
+.station-list,
+.map-container {
+    min-width: 0;
+    width: 100%;
+}
+
+/* Keep station cards inside their column */
+.station-list  .station-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 0 15px;
+    transform: none;
+}
+
+/* Keep the map inside its column */
+#station-map {
+    width: 100%;
+    height: 450px;
+    min-height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+    .station-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .map-container {
+        order: -1;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    main:has(.station-content) {
+        width: 92%;
+        padding-top: 25px;
+    }
+
+    .station-content {
+        margin-top: 35px;
+        gap: 22px;
+    }
+
+    #station-map {
+        height: 350px;
+    }
+}
+
+/* Temporary station layout diagnostic */
+main:has(.station-content) {
+    overflow-x: hidden;
+}
+
+.station-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 24px !important;
+}
+
+.station-list,
+.map-container {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* =========================================
+   RIDER DASHBOARD
+========================================= */
+
+.eco-dashboard {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 42px 0 65px;
+}
+
+.eco-dashboard-head {
+    padding: 35px;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #e8f7ef, #f4faf5);
+    border: 1px solid #dceee2;
+    margin-bottom: 30px;
+}
+
+.eco-dashboard-head h1 {
+    margin: 12px 0;
+    color: #193c2b;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.15;
+}
+
+.eco-dashboard-head p {
+    color: #536b5d;
+    font-size: 16px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+/* Active ride */
+
+.eco-active-ride-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 28px;
+    margin-bottom: 45px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e1ebe4;
+    box-shadow: 0 8px 25px rgba(24, 53, 83, 0.05);
+}
+
+.eco-active-ride-content h2 {
+    margin: 10px 0;
+    color: #193c2b;
+    font-size: 28px;
+}
+
+.eco-active-bike-location {
+    color: #64776b;
+    margin-bottom: 15px;
+}
+
+.eco-active-ride-action {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.eco-active-ride-icon {
+    display: grid;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    background: #eaf7ef;
+    font-size: 32px;
+}
+
+/* No active ride */
+
+.eco-no-active-ride {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 28px;
+    margin-bottom: 45px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e1ebe4;
+}
+
+.eco-no-active-ride h2 {
+    margin: 8px 0;
+    color: #193c2b;
+}
+
+.eco-no-active-ride p {
+    color: #64776b;
+    line-height: 1.5;
+}
+
+/* Ride history */
+
+.eco-ride-history {
+    width: 100%;
+}
+
+.eco-ride-history .eco-section-heading {
+    margin-bottom: 20px;
+}
+
+.eco-ride-history .eco-section-heading h2 {
+    margin: 7px 0;
+    color: #193c2b;
+    font-size: 27px;
+}
+
+.eco-ride-history .eco-section-heading p {
+    color: #64776b;
+}
+
+.eco-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border: 1px solid #e4ebe6;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(24, 53, 83, 0.04);
+}
+
+.eco-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+.eco-table th {
+    padding: 17px 18px;
+    text-align: left;
+    background: #f0f7f2;
+    color: #315640;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.eco-table td {
+    padding: 18px;
+    border-top: 1px solid #edf1ee;
+    color: #43594b;
+    font-size: 14px;
+}
+
+.eco-table tbody tr:hover {
+    background: #f9fcfa;
+}
+
+.eco-table td strong {
+    color: #203c2c;
+}
+
+.eco-empty-history {
+    text-align: center !important;
+    padding: 45px 20px !important;
+}
+
+.eco-empty-history > span {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.eco-empty-history p {
+    margin: 8px 0 15px;
+    color: #64776b;
+}
+
+/* Dashboard responsive layout */
+
+@media (max-width: 700px) {
+
+    .eco-dashboard {
+        width: 92%;
+        padding-top: 25px;
+    }
+
+    .eco-dashboard-head {
+        padding: 25px 20px;
+    }
+
+    .eco-active-ride-panel,
+    .eco-no-active-ride {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+    }
+
+    .eco-active-ride-action {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .eco-section-heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* =========================================
+   RENTAL DETAILS PAGE
+========================================= */
+
+.eco-rental-page {
+    width: 92%;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 40px 0 65px;
+}
+
+.eco-page-heading {
+    margin-bottom: 28px;
+}
+
+.eco-page-heading h1 {
+    margin: 12px 0 8px;
+    color: #193c2b;
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.eco-rental-bike-code {
+    color: #64776b;
+    margin-bottom: 14px;
+    font-size: 16px;
+}
+
+.eco-back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #28764a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.eco-back-link:hover {
+    text-decoration: underline;
+}
+
+/* Detail card */
+
+.eco-detail-card {
+    padding: 30px;
+    border: 1px solid #e1ebe4;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(24, 53, 83, 0.05);
+}
+
+.eco-detail-card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.eco-detail-card-heading h2 {
+    margin-top: 7px;
+    color: #193c2b;
+    font-size: 25px;
+}
+
+.eco-detail-bike-icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 17px;
+    background: #eaf7ef;
+    font-size: 30px;
+}
+
+/* Information rows */
+
+.eco-detail-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid #edf1ee;
+}
+
+.eco-detail-line > span {
+    color: #64776b;
+    font-size: 14px;
+}
+
+.eco-detail-line strong {
+    color: #203c2c;
+    text-align: right;
+    font-size: 14px;
+}
+
+.eco-detail-fare {
+    color: #16804c !important;
+    font-size: 20px !important;
+}
+
+/* Duration */
+
+.eco-duration-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 13px;
+    background: #edf7f0;
+}
+
+.eco-duration-panel span {
+    color: #456653;
+    font-size: 14px;
+}
+
+.eco-duration-panel strong {
+    color: #17623b;
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Completed ride */
+
+.eco-completed-notice {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.eco-completed-notice > span {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #d9f4e3;
+    color: #16804c;
+    font-size: 24px;
+}
+
+.eco-completed-notice h2 {
+    margin-bottom: 5px;
+}
+
+/* Action panels */
+
+.eco-rental-action-panel {
+    margin-top: 25px;
+    padding: 24px;
+    border-radius: 16px;
+    background: #f2f8f3;
+    border: 1px solid #e0eee3;
+}
+
+.eco-rental-action-panel h3 {
+    margin: 8px 0;
+    color: #193c2b;
+    font-size: 21px;
+}
+
+.eco-rental-action-panel > p {
+    margin-bottom: 20px;
+    color: #64776b;
+    line-height: 1.6;
+}
+
+.eco-full-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.eco-cancel-button {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #e4c5c5;
+    border-radius: 10px;
+    background: #fff;
+    color: #a33e3e;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eco-cancel-button:hover {
+    background: #fff2f2;
+}
+
+/* Return form */
+
+.eco-return-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eco-return-form label {
+    color: #315640;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.eco-return-form select {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 13px;
+    border: 1px solid #d4e2d8;
+    border-radius: 10px;
+    background: #fff;
+    color: #203c2c;
+    font-size: 15px;
+}
+
+.eco-return-form select:focus {
+    outline: 2px solid #70bd91;
+    outline-offset: 2px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .eco-rental-page {
+        padding-top: 25px;
+    }
+
+    .eco-detail-card {
+        padding: 20px;
+        border-radius: 17px;
+    }
+
+    .eco-detail-line {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .eco-detail-line strong {
+        text-align: left;
+    }
+
+    .eco-duration-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .eco-rental-action-panel {
+        padding: 18px;
+    }
+}
+
+/* =========================================
+   LOGIN / AUTHENTICATION PAGE
+========================================= */
+
+.eco-auth-wrap {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 55px 20px;
+    background: #f5f9f5;
+}
+
+.eco-auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 40px;
+    border: 1px solid #e1ebe4;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(24, 53, 83, 0.07);
+}
+
+.eco-auth-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 24px;
+    border-radius: 17px;
+    background: #eaf7ef;
+    font-size: 29px;
+}
+
+.eco-auth-card h1 {
+    margin: 10px 0;
+    color: #193c2b;
+    font-size: 36px;
+}
+
+.eco-auth-description {
+    margin-bottom: 28px;
+    color: #64776b;
+    line-height: 1.7;
+}
+
+.eco-auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eco-auth-field label {
+    color: #315640;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.eco-auth-field input {
+    width: 100%;
+    min-height: 49px;
+    padding: 12px 14px;
+    border: 1px solid #d4e2d8;
+    border-radius: 10px;
+    background: #fff;
+    color: #203c2c;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.eco-auth-field input:focus {
+    outline: 2px solid #70bd91;
+    outline-offset: 2px;
+    border-color: #70bd91;
+}
+
+.eco-auth-submit {
+    width: 100%;
+    margin-top: 8px;
+    justify-content: center;
+}
+
+.eco-auth-divider {
+    height: 1px;
+    margin: 27px 0 20px;
+    background: #edf1ee;
+}
+
+.eco-auth-foot {
+    margin: 0;
+    color: #64776b;
+    text-align: center;
+    font-size: 14px;
+}
+
+.eco-auth-foot a {
+    font-weight: 700;
+}
+
+.eco-auth-card .errorlist {
+    margin: 0;
+    padding: 0;
+    color: #b43d3d;
+    font-size: 13px;
+    list-style: none;
+}
+
+@media (max-width: 500px) {
+    .eco-auth-wrap {
+        padding: 30px 15px;
+    }
+
+    .eco-auth-card {
+        padding: 27px 22px;
+        border-radius: 17px;
+    }
+
+    .eco-auth-card h1 {
+        font-size: 30px;
+    }
+}
+
+/* =========================================
+   SIGNUP PAGE
+========================================= */
+
+.eco-signup-card {
+    max-width: 500px;
+}
+
+.eco-signup-card .eco-form-stack {
+    gap: 17px;
+}
+
+.eco-signup-card .eco-auth-field {
+    width: 100%;
+}
+
+.eco-signup-card .eco-auth-field input,
+.eco-signup-card .eco-auth-field select,
+.eco-signup-card .eco-auth-field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid #d4e2d8;
+    border-radius: 10px;
+    background: #fff;
+    color: #203c2c;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.eco-signup-card .eco-auth-field input:focus,
+.eco-signup-card .eco-auth-field select:focus,
+.eco-signup-card .eco-auth-field textarea:focus {
+    outline: 2px solid #70bd91;
+    outline-offset: 2px;
+    border-color: #70bd91;
+}
+
+.eco-signup-card .eco-help {
+    color: #718176;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.eco-signup-card .eco-help ul {
+    margin: 7px 0 0;
+    padding-left: 20px;
+}
+
+.eco-signup-card .eco-error {
+    color: #b43d3d;
+    font-size: 13px;
+}
+
+.eco-signup-card .eco-error ul {
+    margin: 5px 0 0;
+    padding-left: 20px;
+}
+
+.eco-signup-card .errorlist {
+    color: #b43d3d;
+    font-size: 13px;
+}
+
+.eco-signup-card .eco-auth-submit {
+    margin-top: 8px;
+}
+
+@media (max-width: 500px) {
+    .eco-signup-card {
+        padding: 27px 22px;
+    }
+}
+
+/* =========================================
+   STAFF ADMIN DASHBOARD
+========================================= */
+
+.eco-admin-page {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 0 70px;
+}
+
+.eco-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.eco-admin-header h1 {
+    margin: 10px 0;
+    color: #193c2b;
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.eco-admin-header p,
+.eco-admin-management p {
+    color: #64776b;
+    line-height: 1.6;
+}
+
+.eco-admin-badge {
+    padding: 10px 16px;
+    border-radius: 30px;
+    background: #eaf7ef;
+    color: #28764a;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Management */
+
+.eco-admin-management {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e1ebe4;
+    border-radius: 18px;
+    background: #fff;
+}
+
+.eco-admin-management h2 {
+    margin: 7px 0;
+    color: #193c2b;
+}
+
+.eco-admin-management p {
+    margin: 0;
+}
+
+.eco-admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.eco-admin-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border: 1px solid #cfe0d4;
+    border-radius: 10px;
+    color: #28764a;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.eco-admin-secondary-btn:hover {
+    background: #edf7f0;
+}
+
+/* Statistics */
+
+.eco-admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.eco-admin-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 23px;
+    border: 1px solid #e1ebe4;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(24, 53, 83, 0.04);
+}
+
+.eco-admin-stat-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: #eaf7ef;
+    font-size: 23px;
+}
+
+.eco-admin-stat-card p {
+    margin: 0 0 6px;
+    color: #64776b;
+    font-size: 13px;
+}
+
+.eco-admin-stat-card strong {
+    color: #193c2b;
+    font-size: 28px;
+}
+
+/* Dashboard sections */
+
+.eco-admin-section {
+    margin-top: 30px;
+    padding: 25px;
+    border: 1px solid #e1ebe4;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(24, 53, 83, 0.035);
+}
+
+.eco-admin-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.eco-admin-section-heading h2 {
+    margin: 7px 0 0;
+    color: #193c2b;
+    font-size: 23px;
+}
+
+/* Tables */
+
+.eco-admin-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #edf1ee;
+    border-radius: 12px;
+}
+
+.eco-admin-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.eco-admin-table th {
+    padding: 15px;
+    background: #f2f8f3;
+    color: #456653;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.eco-admin-table td {
+    padding: 15px;
+    border-top: 1px solid #edf1ee;
+    color: #526459;
+    font-size: 13px;
+}
+
+.eco-admin-table td strong {
+    color: #193c2b;
+}
+
+.eco-admin-table tbody tr:hover {
+    background: #f9fcf9;
+}
+
+.eco-admin-label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #edf7f0;
+    color: #28764a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.eco-admin-empty {
+    padding: 25px !important;
+    color: #87948b !important;
+    text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .eco-admin-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .eco-admin-management {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 550px) {
+    .eco-admin-page {
+        padding-top: 25px;
+    }
+
+    .eco-admin-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .eco-admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .eco-admin-stat-card {
+        padding: 18px;
+    }
+
+    .eco-admin-section {
+        padding: 16px;
+    }
+
+    .eco-admin-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .eco-admin-actions a {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   STATION MANAGEMENT
+========================================= */
+
+.eco-manage-page {
+    width: 92%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 40px 0 70px;
+}
+
+.eco-manage-header {
+    margin-bottom: 30px;
+}
+
+.eco-manage-header h1 {
+    margin: 10px 0;
+    color: #193c2b;
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.eco-manage-header p {
+    color: #64776b;
+    line-height: 1.6;
+}
+
+.eco-manage-form-card,
+.eco-manage-list-section {
+    padding: 28px;
+    border: 1px solid #e1ebe4;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(24, 53, 83, 0.04);
+}
+
+.eco-manage-form-card {
+    margin-bottom: 30px;
+}
+
+.eco-manage-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.eco-manage-section-heading h2 {
+    margin: 7px 0;
+    color: #193c2b;
+    font-size: 24px;
+}
+
+.eco-manage-section-heading p {
+    margin: 0;
+    color: #64776b;
+    font-size: 14px;
+}
+
+.eco-manage-icon {
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    background: #eaf7ef;
+    font-size: 25px;
+}
+
+/* Add station form */
+
+.eco-manage-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.eco-manage-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eco-manage-field label {
+    color: #315640;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.eco-manage-field input,
+.eco-manage-field select,
+.eco-manage-field textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    border: 1px solid #d4e2d8;
+    border-radius: 10px;
+    background: #fff;
+    color: #203c2c;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.eco-manage-field textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.eco-manage-field input:focus,
+.eco-manage-field select:focus,
+.eco-manage-field textarea:focus {
+    outline: 2px solid #70bd91;
+    outline-offset: 2px;
+}
+
+.eco-manage-form > button {
+    justify-self: start;
+    grid-column: 1 / -1;
+    margin-top: 5px;
+}
+
+.eco-manage-field .eco-help {
+    color: #718176;
+    font-size: 12px;
+}
+
+.eco-manage-field .eco-error,
+.eco-manage-form .errorlist {
+    color: #b43d3d;
+    font-size: 13px;
+}
+
+/* Station cards */
+
+.eco-station-management-list {
+    display: grid;
+    gap: 15px;
+}
+
+.eco-managed-station-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 22px;
+    border: 1px solid #e5ede7;
+    border-radius: 15px;
+    background: #fbfdfb;
+}
+
+.eco-managed-station-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.eco-managed-station-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: #eaf7ef;
+    font-size: 21px;
+}
+
+.eco-managed-station-title h3 {
+    margin: 0 0 7px;
+    color: #193c2b;
+    font-size: 18px;
+}
+
+.eco-management-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eco-management-active {
+    background: #e2f5e9;
+    color: #217044;
+}
+
+.eco-management-inactive {
+    background: #fceaea;
+    color: #a33e3e;
+}
+
+.eco-managed-station-address {
+    margin: 15px 0 10px;
+    color: #64776b;
+    font-size: 13px;
+}
+
+.eco-managed-station-capacity {
+    display: flex;
+    gap: 8px;
+    color: #64776b;
+    font-size: 13px;
+}
+
+.eco-managed-station-capacity strong {
+    color: #315640;
+}
+
+.eco-managed-station-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.eco-managed-station-actions form {
+    margin: 0;
+}
+
+.eco-management-danger-btn,
+.eco-management-reactivate-btn {
+    padding: 11px 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.eco-management-danger-btn {
+    border: 1px solid #efcccc;
+    background: #fff;
+    color: #a33e3e;
+}
+
+.eco-management-danger-btn:hover {
+    background: #fff0f0;
+}
+
+.eco-management-reactivate-btn {
+    border: 1px solid #cfe5d5;
+    background: #eaf7ef;
+    color: #28764a;
+}
+
+.eco-management-reactivate-btn:hover {
+    background: #d9f0e1;
+}
+
+/* Empty state */
+
+.eco-management-empty {
+    padding: 45px 20px;
+    border: 1px dashed #cbdccf;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.eco-management-empty > span {
+    font-size: 35px;
+}
+
+.eco-management-empty h3 {
+    margin: 12px 0 5px;
+    color: #193c2b;
+}
+
+.eco-management-empty p {
+    color: #718176;
+    font-size: 14px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+    .eco-manage-page {
+        padding-top: 25px;
+    }
+
+    .eco-manage-form-card,
+    .eco-manage-list-section {
+        padding: 20px;
+    }
+
+    .eco-manage-form {
+        grid-template-columns: 1fr;
+    }
+
+    .eco-managed-station-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .eco-managed-station-actions {
+        width: 100%;
+    }
+
+    .eco-managed-station-actions > a,
+    .eco-managed-station-actions > form,
+    .eco-managed-station-actions button {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   EDIT STATION PAGE
+========================================= */
+
+.eco-edit-station-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    grid-column: 1 / -1;
+    margin-top: 8px;
+}
+
+.eco-edit-station-actions a {
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .eco-edit-station-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .eco-edit-station-actions > * {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   BICYCLE MANAGEMENT
+========================================= */
+
+.eco-managed-bicycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.eco-managed-bicycle-card {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.eco-managed-bicycle-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.eco-managed-bicycle-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 25px;
+}
+
+.eco-managed-bicycle-card h3 {
+    margin: 0 0 20px;
+    font-size: 1.3rem;
+}
+
+.eco-managed-bicycle-details {
+    display: grid;
+    gap: 14px;
+}
+
+.eco-managed-bicycle-details > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.eco-managed-bicycle-details span {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.eco-managed-bicycle-details strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.eco-status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 11px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.eco-status-active {
+    color: #38c98a;
+    background: rgba(56, 201, 138, 0.12);
+}
+
+.eco-status-inactive {
+    color: #f0a0a0;
+    background: rgba(220, 70, 70, 0.12);
+}
+
+.eco-status-pending {
+    color: #e9c36a;
+    background: rgba(233, 195, 106, 0.12);
+}
+
+.eco-status-rented {
+    color: #83baff;
+    background: rgba(90, 150, 255, 0.12);
+}
+
+.eco-bicycle-battery-track {
+    height: 7px;
+    margin-top: 18px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.eco-bicycle-battery-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: #38c98a;
+}
+
+.eco-managed-bicycle-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.eco-managed-bicycle-actions form {
+    margin: 0;
+}
+
+.eco-managed-bicycle-actions button,
+.eco-managed-bicycle-actions a {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.eco-danger-btn {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #a83e3e;
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eco-danger-btn:hover {
+    background: #c34a4a;
+}
+
+.eco-managed-empty {
+    grid-column: 1 / -1;
+    padding: 45px 20px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.eco-managed-empty > span {
+    font-size: 40px;
+}
+
+.eco-managed-empty h3 {
+    margin: 12px 0 8px;
+}
+
+.eco-managed-empty p {
+    opacity: 0.7;
+}
+
+@media (max-width: 520px) {
+    .eco-managed-bicycle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eco-managed-bicycle-actions {
+        flex-direction: column;
+    }
+
+    .eco-managed-bicycle-actions form,
+    .eco-managed-bicycle-actions button,
+    .eco-managed-bicycle-actions a {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   ECO RIDE MOCK CHECKOUT
+========================================= */
+
+.eco-checkout-page {
+    width: 100%;
+    padding: 55px 20px;
+    box-sizing: border-box;
+}
+
+.eco-checkout-card {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 32px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+}
+
+.eco-checkout-header {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.eco-checkout-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 16px;
+    border-radius: 18px;
+    background: rgba(56, 201, 138, 0.13);
+    font-size: 27px;
+}
+
+.eco-checkout-header h1 {
+    margin: 10px 0;
+}
+
+.eco-checkout-header p {
+    opacity: 0.7;
+}
+
+.eco-checkout-notice {
+    padding: 15px 17px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(56, 201, 138, 0.25);
+    border-radius: 13px;
+    background: rgba(56, 201, 138, 0.08);
+}
+
+.eco-checkout-notice strong {
+    color: #38c98a;
+}
+
+.eco-checkout-notice p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+}
+
+.eco-checkout-summary {
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.eco-checkout-summary h2 {
+    margin: 0 0 20px;
+    font-size: 1.15rem;
+}
+
+.eco-checkout-detail,
+.eco-checkout-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+}
+
+.eco-checkout-detail span,
+.eco-checkout-total span {
+    opacity: 0.7;
+}
+
+.eco-checkout-detail strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.eco-checkout-total {
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 1.1rem;
+}
+
+.eco-checkout-total strong {
+    color: #38c98a;
+}
+
+.eco-checkout-messages {
+    margin-top: 18px;
+}
+
+.eco-checkout-message {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: rgba(90, 150, 255, 0.12);
+}
+
+.eco-checkout-actions {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.eco-checkout-actions button,
+.eco-checkout-view {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 18px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 12px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.eco-checkout-actions button:hover,
+.eco-checkout-view:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.eco-checkout-success {
+    background: #238b60;
+    color: white;
+}
+
+.eco-checkout-fail {
+    background: rgba(190, 65, 65, 0.13);
+    color: #e98b8b;
+    border: 1px solid rgba(190, 65, 65, 0.3) !important;
+}
+
+.eco-checkout-cancel {
+    background: rgba(255, 255, 255, 0.09);
+    color: inherit;
+}
+
+.eco-checkout-complete {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.eco-checkout-complete span {
+    display: inline-grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(56, 201, 138, 0.15);
+    color: #38c98a;
+    font-size: 23px;
+}
+
+.eco-checkout-view {
+    margin-top: 18px;
+    background: #238b60;
+    color: white;
+}
+
+.eco-checkout-footer {
+    margin: 25px 0 0;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.55;
+}
+
+@media (max-width: 520px) {
+    .eco-checkout-page {
+        padding: 30px 14px;
+    }
+
+    .eco-checkout-card {
+        padding: 22px 17px;
+    }
+}
